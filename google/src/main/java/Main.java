@@ -21,13 +21,12 @@ public class Main {
                     writer.println(line);
                 }
                 if (lineNumber == 2) {
-                    String[] tabString = line.split(" ");
                     line = bufferedReader.readLine();
+                    String[] tabString = line.split(" ");
                     writer.println(line);
                 }
                 lineNumber++;
             }
-            writer.println(line);
             writer.close();
             bufferedReader.close();
             fileReader.close();

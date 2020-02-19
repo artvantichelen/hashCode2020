@@ -31,11 +31,13 @@ class MainTest {
         File file = new File(outputFilePath);
         String line1;
         String line2;
+        String line3 = "";
         try {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             line1 = bufferedReader.readLine();
             line2 = bufferedReader.readLine();
+            line3 = bufferedReader.readLine();
             bufferedReader.close();
             fileReader.close();
         } catch (Exception e) {
@@ -46,6 +48,7 @@ class MainTest {
 
         assert(line1).equals(line1Expected);
         assert(line2).equals(line2Expected);
+        assert(line3 == null);
 
     }
 }
