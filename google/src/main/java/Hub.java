@@ -37,15 +37,20 @@ public class Hub {
             indexOfBest = getIndexOfBest(scorePerLibraryTemp);
             updateLibrary.add(libraries.get(indexOfBest));
             scorePerLibraryTemp.remove(scorePerLibraryTemp.get(indexOfBest));
+            for (int j = 0; j < libraries.size(); j++) {
+                ArrayList<Book> bookUpdate = scanPlanning.deleteBookScanned(libraries.get(indexOfBest), libraries.get(j));
+                libraries.get(i).setBooks(bookUpdate);
+            }
         }
         return updateLibrary;
     }
 
     private Integer getIndexOfBest(ArrayList<Integer> scorePerLibrary) {
-        Integer indexOfBest = scorePerLibrary.get(0);
+        Integer maxScore = scorePerLibrary.get(0);
+        Integer indexOfBest = 0;
         for (int i = 0; i < scorePerLibrary.size(); i++) {
-            if(indexOfBest < scorePerLibrary.get(i)) {
-                indexOfBest = scorePerLibrary.get(i);
+            if(maxScore < scorePerLibrary.get(i)) {
+                indexOfBest = i;
             }
         }
         return indexOfBest;

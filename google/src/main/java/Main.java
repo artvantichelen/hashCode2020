@@ -8,12 +8,12 @@ public class Main {
 
     public static void main(String[] args) {
 
-        File file = new File(args[0]);
+        File file = new File("C:/Users/arthur/hashCode/hashCode2020/google/src/main/resources/input/a_example.txt");
 
         try {
             Hub hub = null;
             FileReader fileReader = new FileReader(file);
-            PrintWriter writer = new PrintWriter(args[1], "UTF-8");
+            PrintWriter writer = new PrintWriter("C:/Users/arthur/hashCode/hashCode2020/google/src/main/resources/output/a_example_result.txt", "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
             Integer lineNbr = 1;
@@ -22,24 +22,24 @@ public class Main {
             ScanPlanning scanPlanning = new ScanPlanning(Integer.parseInt(tabString[0]), Integer.parseInt(tabString[1]), Integer.parseInt(tabString[2]));
             ArrayList<Library> libraries = new ArrayList<>();
             ArrayList<Book> books = new ArrayList<>();
+            Library library = null;
             while (line != null) {
                 if(lineNbr == 2) {
-                    String[] tabScoring = line.split("");
+                    String[] tabScoring = line.split(" ");
                     for (int i = 0; i < tabScoring.length; i++) {
                         Book book = new Book(i, Integer.parseInt(tabScoring[i]));
                         books.add(book);
                     }
                 }
-                Library library = null;
                 if(lineNbr > 2 && lineNbr % 2 != 0) {
-                    String[] tabLibrary = line.split("");
+                    String[] tabLibrary = line.split(" ");
                     for (int i = 0; i < tabLibrary.length; i++) {
                         library = new Library(Integer.parseInt(tabLibrary[0]), Integer.parseInt(tabLibrary[1]), Integer.parseInt(tabLibrary[2]), libraryIndex);
                         libraryIndex++;
                     }
                 }
                 if(lineNbr > 2 && lineNbr % 2 == 0) {
-                    String[] tabBook = line.split("");
+                    String[] tabBook = line.split(" ");
                     ArrayList<Book> booksForLibrary = new ArrayList<>();
                     for (int i = 0; i < tabBook.length; i++) {
                         booksForLibrary.add(books.get(Integer.parseInt(tabBook[i])));

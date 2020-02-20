@@ -86,7 +86,8 @@ public class Library {
 
     public int maxScore (ArrayList<Book> books, Integer nbrScanBook) {
         int score = 0;
-        for (int i = 0; i < nbrScanBook; i++) {
+        int length = Math.min(nbrScanBook, books.size());
+        for (int i = 0; i < length; i++) {
             Book book = books.get(i);
             score += book.getScore();
         }
