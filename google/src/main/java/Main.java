@@ -11,7 +11,7 @@ public class Main {
         File file = new File(args[0]);
 
         try {
-            Hub hub;
+            Hub hub = null;
             FileReader fileReader = new FileReader(file);
             PrintWriter writer = new PrintWriter(args[1], "UTF-8");
             BufferedReader bufferedReader = new BufferedReader(fileReader);
@@ -51,8 +51,9 @@ public class Main {
                 lineNbr++;
             }
             // Output
-            writer.println(hub.getLibraries().size());
-            for (Library l : hub.getLibraries()) {
+            hub = new Hub(libraries, scanPlanning);
+            writer.println(hub.getLibrariesSort().size());
+            for (Library l : hub.getLibrariesSort()) {
                 writer.println(l.getName()+" "+l.getScanBooks().size());
                 for (Book b : l.getScanBooks()) {
                     writer.print(b.getId()+" ");
@@ -60,8 +61,6 @@ public class Main {
                 writer.print("\n");
                 
             }
-
-
             writer.close();
             bufferedReader.close();
             fileReader.close();
