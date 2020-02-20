@@ -6,6 +6,8 @@ public class Library {
     private ArrayList<Book> books;
     private Integer timeToSignUp;
     private Integer capacityPerDay;
+    private Boolean isSignup;
+    private ArrayList<Book> scanBooks;
 
     public Library() {
     }
@@ -15,6 +17,8 @@ public class Library {
         this.books = new ArrayList<>();
         this.timeToSignUp = timeToSignUp;
         this.capacityPerDay = capacityPerDay;
+        this.isSignup = false;
+        this.scanBooks = new ArrayList<>();
     }
 
     public ArrayList<Book> getBooks() {
@@ -37,9 +41,21 @@ public class Library {
         this.books = books;
     }
 
+    public Boolean getSignup() {
+        return isSignup;
+    }
+
+    public ArrayList<Book> getScanBooks() {
+        return scanBooks;
+    }
+
+    public void setScanBooks(ArrayList<Book> scanBooks) {
+        this.scanBooks = scanBooks;
+    }
+
     private int getMax(ArrayList<Book> list){
         int max = Integer.MIN_VALUE;
-        itn indexMax;
+        int indexMax = 0;
         for(int i=0; i<list.size(); i++){
             if(list.get(i).getScore() > max){
                 max = list.get(i).getScore();
@@ -62,10 +78,11 @@ public class Library {
     }
 
 
-    public int maxScore (ArrayList<Book> books) {
-        int score;
-        for (Book book : books) {
-            score = score + book.getScore();
+    public int maxScore (ArrayList<Book> books, Integer nbrScanBook) {
+        int score = 0;
+        for (int i = 0; i < nbrScanBook; i++) {
+            Book book = books.get(i);
+            score += book.getScore();
         }
         return score;
     }
