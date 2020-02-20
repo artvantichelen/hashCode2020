@@ -21,4 +21,13 @@ public class ScanPlanning {
     public Integer getNbrOfDays() {
         return nbrOfDays;
     }
+
+    public Integer getLibraryScoreByTime (Integer deadLine, Library library) {
+        Integer timeToScan = deadLine - library.getTimeToSignUp();
+        Integer nbrOfDayForScanAll = library.getNbrOfBooks() / library.getCapacityPerDay();
+        if (nbrOfDayForScanAll > timeToScan) {
+            
+        }
+        return null;
+    }
 }
