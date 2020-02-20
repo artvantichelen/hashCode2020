@@ -6,19 +6,21 @@ public class Library {
     private ArrayList<Book> books;
     private Integer timeToSignUp;
     private Integer capacityPerDay;
+    private Integer name;
     private Boolean isSignup;
     private ArrayList<Book> scanBooks;
 
     public Library() {
     }
 
-    public Library(Integer nbrOfBooks, Integer timeToSignUp, Integer capacityPerDay) {
+    public Library(Integer nbrOfBooks, Integer timeToSignUp, Integer capacityPerDay, Integer name) {
         this.nbrOfBooks = nbrOfBooks;
         this.books = new ArrayList<>();
         this.timeToSignUp = timeToSignUp;
         this.capacityPerDay = capacityPerDay;
         this.isSignup = false;
         this.scanBooks = new ArrayList<>();
+        this.name = name;
     }
 
     public ArrayList<Book> getBooks() {
@@ -47,6 +49,10 @@ public class Library {
 
     public ArrayList<Book> getScanBooks() {
         return scanBooks;
+    }
+
+    public Integer getName() {
+        return name;
     }
 
     public void setScanBooks(ArrayList<Book> scanBooks) {
