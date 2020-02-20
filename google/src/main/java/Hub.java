@@ -21,22 +21,25 @@ public class Hub {
     }
 
     private ArrayList<Library> sortLibraries (ArrayList<Library> libraries, ScanPlanning scanPlanning) {
-        ArrayList<Library> tempLibrary = new ArrayList<>();
+        ArrayList<Library> updateLibrary = new ArrayList<>();
         ArrayList<Integer> scorePerLibrary = new ArrayList<>();
         for (int i = 0; i < libraries.size() ; i++) {
             Integer libraryScore = scanPlanning.getLibraryScoreByTime(scanPlanning.getNbrOfDays(), libraries.get(i));
             scorePerLibrary.add(libraryScore);
         }
-        Integer indexOfBest = scorePerLibrary.get(0);
-        indexOfBest = getIndexOfBest(scorePerLibrary, indexOfBest);
+        Integer indexOfBest = 0;
+        ArrayList<Integer> scorePerLibraryTemp = scorePerLibrary;
         for (int i = 0; i < scorePerLibrary.size(); i++) {
-            indexOfBest
+            indexOfBest = getIndexOfBest(scorePerLibraryTemp);
+            updateLibrary.add(libraries.get(indexOfBest));
+            scorePerLibraryTemp.remove(scorePerLibraryTemp.get(indexOfBest));
         }
-        return tempLibrary;
+        return updateLibrary;
     }
 
-    private Integer getIndexOfBest(ArrayList<Integer> scorePerLibrary, Integer indexOfBest) {
-        for (int i = 1; i < scorePerLibrary.size(); i++) {
+    private Integer getIndexOfBest(ArrayList<Integer> scorePerLibrary) {
+        Integer indexOfBest = scorePerLibrary.get(0);
+        for (int i = 0; i < scorePerLibrary.size(); i++) {
             if(indexOfBest < scorePerLibrary.get(i)) {
                 indexOfBest = scorePerLibrary.get(i);
             }
