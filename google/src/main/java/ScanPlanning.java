@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class ScanPlanning {
 
     private Integer nbrOfBooks;
@@ -20,5 +22,16 @@ public class ScanPlanning {
 
     public Integer getNbrOfDays() {
         return nbrOfDays;
+    }
+
+    public Integer getLibraryScoreByTime (Integer deadLine, Library library) {
+        Integer timeToScan = deadLine - library.getTimeToSignUp();
+        Integer nbrOfDayForScanAll = library.getNbrOfBooks() / library.getCapacityPerDay();
+        ArrayList<Book> booksOrders = library.sortBooks(library.getBooks());
+        library.setBooks(booksOrders);
+        if (nbrOfDayForScanAll > timeToScan) {
+            return library.maxScore(library.getBooks(), timeToScan * library.getCapacityPerDay());
+        }
+        return library.maxScore(library.getBooks(), nbrOfDayForScanAll * library.getCapacityPerDay());
     }
 }
