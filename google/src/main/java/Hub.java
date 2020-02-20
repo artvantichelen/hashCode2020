@@ -20,6 +20,10 @@ public class Hub {
         return scanPlanning;
     }
 
+    public ArrayList<Library> getLibrariesSort() {
+        return librariesSort;
+    }
+
     private ArrayList<Library> sortLibraries (ArrayList<Library> libraries, ScanPlanning scanPlanning) {
         ArrayList<Library> updateLibrary = new ArrayList<>();
         ArrayList<Integer> scorePerLibrary = new ArrayList<>();
