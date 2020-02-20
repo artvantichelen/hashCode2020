@@ -1,13 +1,18 @@
 import java.util.ArrayList;
 
-public class Libraries {
+public class Library {
 
+    private Integer nbrOfBooks;
     private ArrayList<Book> books;
     private Integer timeToSignUp;
     private Integer capacityPerDay;
 
-    public Libraries(ArrayList<Book> books, Integer timeToSignUp, Integer capacityPerDay) {
-        this.books = books;
+    public Library() {
+    }
+
+    public Library(Integer nbrOfBooks, Integer timeToSignUp, Integer capacityPerDay) {
+        this.nbrOfBooks = nbrOfBooks;
+        this.books = new ArrayList<>();
         this.timeToSignUp = timeToSignUp;
         this.capacityPerDay = capacityPerDay;
     }
@@ -24,4 +29,11 @@ public class Libraries {
         return capacityPerDay;
     }
 
+    public Integer getNbrOfBooks() {
+        return nbrOfBooks;
+    }
+
+    public void setBooks(ArrayList<Book> books) {
+        this.books = books;
+    }
 }
