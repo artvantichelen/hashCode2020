@@ -34,4 +34,14 @@ public class ScanPlanning {
         }
         return library.maxScore(library.getBooks(), nbrOfDayForScanAll * library.getCapacityPerDay());
     }
+
+    public Library deleteBookScanned (Library startLibrary, Library updateLibrary) {
+        ArrayList<Book> bookUpdate = new ArrayList<>();
+        for (int i = 0; i < startLibrary.getScanBooks().size(); i++) {
+            bookUpdate = updateLibrary.getBooks();
+            bookUpdate.remove(startLibrary.getBooks().get(i));
+        }
+        updateLibrary.setBooks(bookUpdate);
+        return updateLibrary;
+    }
 }

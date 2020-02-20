@@ -37,11 +37,11 @@ public class Main {
                 }
                 if(lineNbr > 2 && lineNbr % 2 == 0) {
                     String[] tabBook = line.split("");
-                    ArrayList<Book> booksForlibrary = new ArrayList<>();
+                    ArrayList<Book> booksForLibrary = new ArrayList<>();
                     for (int i = 0; i < tabBook.length; i++) {
-                        booksForlibrary.add(books.get(Integer.parseInt(tabBook[i])));
+                        booksForLibrary.add(books.get(Integer.parseInt(tabBook[i])));
                     }
-                    library.setBooks(booksForlibrary);
+                    library.setBooks(booksForLibrary);
                     libraries.add(library);
                 }
                 line = bufferedReader.readLine();
