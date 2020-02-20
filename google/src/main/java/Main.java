@@ -14,18 +14,9 @@ public class Main {
             PrintWriter writer = new PrintWriter(args[1]);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line = bufferedReader.readLine();
-            int lineNumber = 1;
-            while (lineNumber < 3) {
-                if (lineNumber == 1) {
-                    String[] tabString = line.split(" ");
-                    writer.println(line);
-                }
-                if (lineNumber == 2) {
-                    line = bufferedReader.readLine();
-                    String[] tabString = line.split(" ");
-                    writer.println(line);
-                }
-                lineNumber++;
+            while (line != null) {
+                writer.println(line);
+                line = bufferedReader.readLine();
             }
             writer.close();
             bufferedReader.close();
